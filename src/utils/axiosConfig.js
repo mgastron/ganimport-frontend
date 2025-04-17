@@ -2,7 +2,10 @@ import axios from 'axios';
 
 // Crear una instancia de axios
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8080'
+  baseURL: process.env.REACT_APP_API_URL,
+  headers: {
+    'Content-Type': 'application/json'
+  }
 });
 
 // Agregar un interceptor para todas las peticiones

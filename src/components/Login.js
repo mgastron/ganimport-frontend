@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import API_URL from '../config/api.js';
 import {
   Button,
   TextField,
@@ -17,12 +18,14 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('API URL being used:', process.env.REACT_APP_API_URL);
+    
     try {
-      const response = await axios.post('http://localhost:8080/api/auth/login', {
-        username: username,
-        password: password
+      const response = await axios.post('https://ganimport-backend-production.up.railway.app/api/auth/login', {
+        username,
+        password
       });
 
       if (response.data) {
@@ -55,7 +58,7 @@ const Login = () => {
           <Typography component="h1" variant="h5" align="center">
             Login
           </Typography>
-          <Box component="form" onSubmit={handleLogin} sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required

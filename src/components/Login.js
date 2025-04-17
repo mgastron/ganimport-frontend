@@ -26,6 +26,12 @@ const Login = () => {
       const response = await axios.post('https://ganimport-backend-production.up.railway.app/api/auth/login', {
         username,
         password
+      }, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://www.ganimport.com.ar'
+        }
       });
 
       if (response.data) {

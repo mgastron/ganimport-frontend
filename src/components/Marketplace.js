@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_URL from '../config/api.js';
 import {
   Container,
   Grid,
@@ -55,7 +56,7 @@ const Marketplace = () => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const response = await fetch('http://localhost:8080/api/products');
+        const response = await fetch(`${API_URL}/api/products`);
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -149,7 +150,7 @@ const Marketplace = () => {
     }
 
     try {
-      await axios.post('http://localhost:8080/api/order', {
+      await axios.post(`${API_URL}/api/order`, {
         items: cart,
         email: 'matiasgastron@gmail.com'
       });

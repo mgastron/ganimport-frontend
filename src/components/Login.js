@@ -20,23 +20,26 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('API URL being used:', process.env.REACT_APP_API_URL);
+    console.log('API URL being used:', API_URL);
     
     try {
-      const response = await axios.post('https://ganimport-backend-production.up.railway.app/api/auth/login', {
+      const response = await axios.post(`${API_URL}/api/auth/login`, {
         username,
         password
       }, {
         withCredentials: true,
         headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://www.ganimport.com.ar'
+          'Content-Type': 'application/json'
         }
       });
 
       if (response.data) {
         localStorage.setItem('username', username);
         localStorage.setItem('isAdmin', response.data.isAdmin);
+        if (response.data.token) {
+          localStorage.setItem('token', response.data.token);
+          console.log('Token stored:', response.data.token);
+        }
         console.log('Username stored:', username); // Para debug
         navigate('/marketplace');
       }

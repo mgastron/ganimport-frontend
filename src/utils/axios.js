@@ -12,6 +12,7 @@ axiosInstance.interceptors.request.use(config => {
   const username = localStorage.getItem('username');
   const token = localStorage.getItem('token');
   
+  // El backend usa X-Username para la autenticación según HeaderAuthenticationFilter
   if (username) {
     config.headers['X-Username'] = username;
   }
@@ -20,6 +21,9 @@ axiosInstance.interceptors.request.use(config => {
     config.headers['Authorization'] = `Bearer ${token}`;
     config.headers['X-Auth-Token'] = token;
   }
+  
+  // Log para depuración
+  console.log('Request headers:', config.headers);
   
   return config;
 });

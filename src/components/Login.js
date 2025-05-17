@@ -29,8 +29,7 @@ const Login = () => {
       }, {
         withCredentials: true,
         headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://www.ganimport.com.ar'
+          'Content-Type': 'application/json'
         }
       });
 

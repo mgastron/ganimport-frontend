@@ -1,8 +1,9 @@
 import axios from 'axios';
+import API_URL from '../config/api.js';
 
 // Crear una instancia de axios con la configuración base
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8080'
+  baseURL: API_URL
 });
 
 // Agregar un interceptor para incluir el username en cada petición

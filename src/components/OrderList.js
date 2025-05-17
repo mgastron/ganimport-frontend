@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Container, Typography, Paper, Box } from '@mui/material';
+import API_URL from '../config/api.js';
 
 const OrderList = () => {
   const [orders, setOrders] = useState([]);
@@ -13,7 +14,7 @@ const OrderList = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/orders');
+      const response = await fetch(`${API_URL}/api/orders`);
       console.log('Response status:', response.status);
       if (response.ok) {
         const data = await response.json();

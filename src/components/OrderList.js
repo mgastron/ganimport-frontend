@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Container, Typography, Paper, Box } from '@mui/material';
 import API_URL from '../config/api.js';
+import axiosInstance from '../utils/axios.js';
 
 const OrderList = () => {
   const [orders, setOrders] = useState([]);
@@ -14,14 +15,13 @@ const OrderList = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/orders`);
+      const response = await axiosInstance.get('/api/orders');
       console.log('Response status:', response.status);
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Orders received:', data);
-        setOrders(data);
+      if (response.status === 200) {
+        console.log('Orders received:', response.data);
+        setOrders(response.data);
       } else {
-        console.error('Response not ok:', await response.text());
+        console.error('Response not ok:', response.statusText);
       }
     } catch (error) {
       console.error('Error fetching orders:', error);

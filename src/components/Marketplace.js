@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import API_URL from '../config/api.js';
+import axiosInstance from '../utils/axios.js';
 import {
   Container,
   Grid,
@@ -56,9 +57,9 @@ const Marketplace = () => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${API_URL}/api/products`);
-        const data = await response.json();
-        setProducts(data);
+        // Usando axiosInstance que ya tiene configurado los headers necesarios
+        const response = await axiosInstance.get('/api/products');
+        setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
       } finally {
@@ -150,7 +151,8 @@ const Marketplace = () => {
     }
 
     try {
-      await axios.post(`${API_URL}/api/order`, {
+      // Usando axiosInstance que ya tiene configurado los headers necesarios
+      await axiosInstance.post('/api/order', {
         items: cart,
         email: 'matiasgastron@gmail.com'
       });

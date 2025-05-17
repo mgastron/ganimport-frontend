@@ -3,7 +3,8 @@ import API_URL from '../config/api.js';
 
 // Crear una instancia de axios con la configuración base
 const axiosInstance = axios.create({
-  baseURL: API_URL
+  baseURL: API_URL,
+  withCredentials: true // Habilitar envío de cookies en solicitudes cross-origin
 });
 
 // Agregar un interceptor para incluir el username en cada petición

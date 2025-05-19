@@ -118,7 +118,7 @@ const Marketplace = () => {
 
   const handleCheckout = () => {
     const total = cart.reduce((sum, item) => {
-      const pricePerUnit = (item.price * 1000 * 0.44) / item.bulkQuantity;
+      const pricePerUnit = (item.price * 1000 * 0.44);
       return sum + (pricePerUnit * item.quantity);
     }, 0);
 
@@ -137,7 +137,7 @@ const Marketplace = () => {
 
   const handleConfirmOrder = async () => {
     const total = cart.reduce((sum, item) => {
-      const pricePerUnit = (item.price * 1000 * 0.44) / item.bulkQuantity;
+      const pricePerUnit = (item.price * 1000 * 0.44);
       return sum + (pricePerUnit * item.quantity);
     }, 0);
 

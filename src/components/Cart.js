@@ -53,7 +53,7 @@ const Cart = ({ open, onClose, cart, onUpdateQuantity, onRemoveItem, onCheckout 
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => {
-      const pricePerUnit = (item.price * 1000 * 0.44) / item.bulkQuantity;
+      const pricePerUnit = (item.price * 1000 * 0.44);
       const itemTotal = pricePerUnit * item.quantity;
       return total + itemTotal;
     }, 0);
@@ -71,8 +71,9 @@ const Cart = ({ open, onClose, cart, onUpdateQuantity, onRemoveItem, onCheckout 
         ) : (
           <>
             {cart.map((item) => {
-              const pricePerUnit = (item.price * 1000 * 0.44) / item.bulkQuantity;
+              const pricePerUnit = (item.price * 1000 * 0.44);
               const itemTotal = pricePerUnit * item.quantity;
+              const bulkPrice = pricePerUnit * item.bulkQuantity;
               
               return (
                 <Box key={item.code} sx={{ mb: 2, p: 2, border: '1px solid #e0e0e0', borderRadius: 1 }}>
@@ -82,6 +83,9 @@ const Cart = ({ open, onClose, cart, onUpdateQuantity, onRemoveItem, onCheckout 
                   </Typography>
                   <Typography variant="body1">
                     Precio por unidad: ${pricePerUnit.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  </Typography>
+                  <Typography variant="body1">
+                    Precio por bulto: ${bulkPrice.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 1 }}>
                     <Typography>Cantidad:</Typography>

@@ -19,7 +19,7 @@ const OrderConfirmation = ({ open, onClose, cart, onConfirm }) => {
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => {
-      const pricePerUnit = (item.price * 1000 * 0.44) / item.bulkQuantity;
+      const pricePerUnit = (item.price * 1000 * 0.44);
       const itemTotal = pricePerUnit * item.quantity;
       return total + itemTotal;
     }, 0);
@@ -36,8 +36,8 @@ const OrderConfirmation = ({ open, onClose, cart, onConfirm }) => {
           productCode: item.code,
           quantity: item.quantity,
           bulkQuantity: item.bulkQuantity,
-          pricePerUnit: (item.price * 1000 * 0.44) / item.bulkQuantity,
-          total: ((item.price * 1000 * 0.44) / item.bulkQuantity) * item.quantity
+          pricePerUnit: (item.price * 1000 * 0.44),
+          total: (item.price * 1000 * 0.44) * item.quantity
         })),
         total: calculateTotal()
       };
@@ -65,9 +65,9 @@ const OrderConfirmation = ({ open, onClose, cart, onConfirm }) => {
       <DialogContent>
         <List>
           {cart.map((item) => {
-            const pricePerUnit = (item.price * 1000 * 0.44) / item.bulkQuantity;
+            const pricePerUnit = (item.price * 1000 * 0.44);
             const itemTotal = pricePerUnit * item.quantity;
-            const bulkPrice = item.price * 1000 * 0.44;
+            const bulkPrice = pricePerUnit * item.bulkQuantity;
             const numberOfBulks = item.quantity / item.bulkQuantity;
 
             return (

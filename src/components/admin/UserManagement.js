@@ -13,7 +13,7 @@ import {
   Snackbar,
   Alert
 } from '@mui/material';
-import axios from 'axios';
+import axiosInstance from '../../utils/axiosConfig';
 
 const UserManagement = () => {
   const [userData, setUserData] = useState({
@@ -45,7 +45,7 @@ const UserManagement = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/api/admin/users', userData);
+      await axiosInstance.post('/api/admin/users', userData);
       setSnackbar({
         open: true,
         message: 'Usuario creado exitosamente',

@@ -12,6 +12,7 @@ import {
   InputLabel,
   Grid
 } from '@mui/material';
+import axiosInstance from '../../utils/axiosConfig';
 
 const CreateUser = ({ open, onClose }) => {
   const [userData, setUserData] = useState({
@@ -29,7 +30,7 @@ const CreateUser = ({ open, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/admin/users', userData);
+      const response = await axiosInstance.post('/api/admin/users', userData);
       onClose();
     } catch (error) {
       console.error('Error creating user:', error);

@@ -52,6 +52,7 @@ const Marketplace = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const categories = ['Bazar', 'Regaleria', 'Baño', 'Ferreteria'];
   const isAdmin = localStorage.getItem('isAdmin') === 'true';
+  const isLoggedIn = !!localStorage.getItem('username');
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -431,9 +432,10 @@ const Marketplace = () => {
                         Código: {product.code || 'N/A'}
                       </Typography>
                       <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        <span style={{ color: theme.primary }}>
-                          ${((product.price * 1000 * 0.44)).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                        </span>
+                        {isLoggedIn
+                          ? `$${((product.price * 1000 * 0.44)).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+                          : <span style={{ color: '#aaa' }}>Inicia sesión para ver precios</span>
+                        }
                         <span style={{ 
                           color: 'rgba(0, 0, 0, 0.7)', 
                           fontSize: '0.8em',
@@ -446,7 +448,10 @@ const Marketplace = () => {
                         Bulto: {product.bulkQuantity} unidades
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        Precio por bulto: ${(product.price * 1000 * 0.44 * product.bulkQuantity).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                        {isLoggedIn
+                          ? `Precio por bulto: $${(product.price * 1000 * 0.44 * product.bulkQuantity).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+                          : <span style={{ color: '#aaa' }}>Inicia sesión para ver precios</span>
+                        }
                       </Typography>
                       {product.dimensions && (
                         <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
@@ -454,20 +459,21 @@ const Marketplace = () => {
                         </Typography>
                       )}
                     </CardContent>
-                    <Button
-                      variant="contained"
-                      fullWidth
-                      onClick={() => addToCart(product)}
-                      disabled={isAdmin}
-                      sx={{ 
-                        mt: 'auto',
-                        mx: 0, // Quitamos el margen horizontal
-                        borderRadius: 0, // Quitamos el border radius del botón
-                        height: '48px', // Altura fija para el botón
-                      }}
-                    >
-                      {isAdmin ? 'No disponible para admin' : 'Agregar al Carrito'}
-                    </Button>
+                    {isLoggedIn && !isAdmin && (
+                      <Button
+                        variant="contained"
+                        fullWidth
+                        onClick={() => addToCart(product)}
+                        sx={{ 
+                          mt: 'auto',
+                          mx: 0, // Quitamos el margen horizontal
+                          borderRadius: 0, // Quitamos el border radius del botón
+                          height: '48px', // Altura fija para el botón
+                        }}
+                      >
+                        Agregar al Carrito
+                      </Button>
+                    )}
                   </Card>
                 </Grid>
               );

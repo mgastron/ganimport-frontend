@@ -69,7 +69,7 @@ const Header = () => {
         </Link>
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          {isLoggedIn && isAdmin && (
+          {isLoggedIn && (isAdmin ? (
             <>
               <Button
                 color="inherit"
@@ -93,8 +93,7 @@ const Header = () => {
                 Cerrar Sesión
               </Button>
             </>
-          )}
-          {isLoggedIn && !isAdmin && (
+          ) : (
             <>
               <Button
                 color="inherit"
@@ -111,7 +110,7 @@ const Header = () => {
                 Cerrar Sesión
               </Button>
             </>
-          )}
+          ))}
         </Box>
       </Toolbar>
     </AppBar>

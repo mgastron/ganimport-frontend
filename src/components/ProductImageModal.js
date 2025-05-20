@@ -55,13 +55,13 @@ const ProductImageModal = ({ open, onClose, product }) => {
               </Typography>
             )}
             <Typography variant="h6" sx={{ mt: 1 }}>
-              Precio por unidad: ${((product.price * 1000 * 0.44)).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              Precio por unidad: TEST-IA ${((product.price * 1000 * 0.44)).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </Typography>
             <Typography variant="body1">
               Cantidad por bulto: {product.bulkQuantity} unidades
             </Typography>
             <Typography variant="body1">
-              Precio por bulto: ${((product.price * 1000 * 0.44) * product.bulkQuantity).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              Precio por bulto: TEST-IA ${((product.price * 1000 * 0.44) * product.bulkQuantity).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </Typography>
           </Box>
         </Box>

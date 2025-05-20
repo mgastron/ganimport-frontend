@@ -432,7 +432,7 @@ const Marketplace = () => {
                       </Typography>
                       <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         <span style={{ color: theme.primary }}>
-                          ${((product.price * 1000 * 0.44) / product.bulkQuantity).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                          TEST-IA ${((product.price * 1000 * 0.44)).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                         </span>
                         <span style={{ 
                           color: 'rgba(0, 0, 0, 0.7)', 
@@ -446,7 +446,7 @@ const Marketplace = () => {
                         Bulto: {product.bulkQuantity} unidades
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        Precio por bulto: ${(product.price * 1000 * 0.44).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                        Precio por bulto: TEST-IA ${(product.price * 1000 * 0.44 * product.bulkQuantity).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                       </Typography>
                       {product.dimensions && (
                         <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>

@@ -68,42 +68,51 @@ const Header = () => {
           />
         </Link>
         <Box sx={{ flexGrow: 1 }} />
-        {isLoggedIn && isAdmin && (
-          <>
-            <Button
-              color="inherit"
-              onClick={() => navigate('/admin/users')}
-              sx={{ color: theme.secondary }}
-            >
-              Crear Usuario
-            </Button>
-            <Button
-              color="inherit"
-              onClick={() => navigate('/admin/orders')}
-              sx={{ color: theme.secondary }}
-            >
-              Ver Pedidos
-            </Button>
-          </>
-        )}
-        {isLoggedIn && !isAdmin && (
-          <Button
-            color="inherit"
-            onClick={() => navigate('/my-orders')}
-            sx={{ color: theme.secondary }}
-          >
-            Mis Pedidos
-          </Button>
-        )}
-        {isLoggedIn && (
-          <Button
-            color="inherit"
-            onClick={handleLogout}
-            sx={{ color: theme.secondary }}
-          >
-            Cerrar Sesión
-          </Button>
-        )}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          {isLoggedIn && isAdmin && (
+            <>
+              <Button
+                color="inherit"
+                onClick={() => navigate('/admin/users')}
+                sx={{ color: theme.secondary }}
+              >
+                Crear Usuario
+              </Button>
+              <Button
+                color="inherit"
+                onClick={() => navigate('/admin/orders')}
+                sx={{ color: theme.secondary }}
+              >
+                Ver Pedidos
+              </Button>
+              <Button
+                color="inherit"
+                onClick={handleLogout}
+                sx={{ color: theme.secondary }}
+              >
+                Cerrar Sesión
+              </Button>
+            </>
+          )}
+          {isLoggedIn && !isAdmin && (
+            <>
+              <Button
+                color="inherit"
+                onClick={() => navigate('/my-orders')}
+                sx={{ color: theme.secondary }}
+              >
+                Mis Pedidos
+              </Button>
+              <Button
+                color="inherit"
+                onClick={handleLogout}
+                sx={{ color: theme.secondary }}
+              >
+                Cerrar Sesión
+              </Button>
+            </>
+          )}
+        </Box>
       </Toolbar>
     </AppBar>
   );

@@ -82,10 +82,10 @@ const Cart = ({ open, onClose, cart, onUpdateQuantity, onRemoveItem, onCheckout 
                     Código: {item.code}
                   </Typography>
                   <Typography variant="body1">
-                    Precio por unidad: TEST-IA ${pricePerUnit.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    Precio por unidad: ${pricePerUnit.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </Typography>
                   <Typography variant="body1">
-                    Precio por bulto: TEST-IA ${bulkPrice.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    Precio por bulto: ${bulkPrice.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 1 }}>
                     <Typography>Cantidad:</Typography>

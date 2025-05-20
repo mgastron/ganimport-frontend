@@ -81,10 +81,10 @@ const OrderConfirmation = ({ open, onClose, cart, onConfirm }) => {
                     Cantidad: {item.quantity} unidades ({numberOfBulks} bultos de {item.bulkQuantity})
                   </Typography>
                   <Typography>
-                    Precio por unidad: TEST-IA ${pricePerUnit.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    Precio por unidad: ${pricePerUnit.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </Typography>
                   <Typography>
-                    Precio por bulto: TEST-IA ${bulkPrice.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    Precio por bulto: ${bulkPrice.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </Typography>
                   <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
                     Subtotal: ${itemTotal.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}

@@ -245,14 +245,6 @@ const Marketplace = () => {
 
   return (
     <Container>
-      {/* Ocultar botones de usuario si no está logueado */}
-      {isLoggedIn && (
-        <Box sx={{ position: 'absolute', top: 0, right: 0, display: 'flex', gap: 2, mt: 2, mr: 2 }}>
-          <Button href="/orders" sx={{ color: theme.secondary }}>MIS PEDIDOS</Button>
-          <Button href="/logout" sx={{ color: theme.secondary }}>CERRAR SESIÓN</Button>
-        </Box>
-      )}
-
       <Box sx={{ mb: 4, mt: 4 }}>
         <form onSubmit={handleSearch} style={{ display: 'flex', gap: '16px' }}>
           <TextField

@@ -13,6 +13,7 @@ const Header = () => {
   const isAdmin = localStorage.getItem('isAdmin') === 'true';
   const username = localStorage.getItem('username');
   const token = localStorage.getItem('token');
+  const isLoggedIn = !!username;
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -67,39 +68,43 @@ const Header = () => {
           />
         </Link>
         <Box sx={{ flexGrow: 1 }} />
-        {isAdmin ? (
-          <>
+        {isLoggedIn && (
+          isAdmin ? (
+            <>
+              <Button
+                color="inherit"
+                onClick={() => navigate('/admin/users')}
+                sx={{ color: theme.secondary }}
+              >
+                Crear Usuario
+              </Button>
+              <Button
+                color="inherit"
+                onClick={() => navigate('/admin/orders')}
+                sx={{ color: theme.secondary }}
+              >
+                Ver Pedidos
+              </Button>
+            </>
+          ) : (
             <Button
               color="inherit"
-              onClick={() => navigate('/admin/users')}
+              onClick={() => navigate('/my-orders')}
               sx={{ color: theme.secondary }}
             >
-              Crear Usuario
+              Mis Pedidos
             </Button>
-            <Button
-              color="inherit"
-              onClick={() => navigate('/admin/orders')}
-              sx={{ color: theme.secondary }}
-            >
-              Ver Pedidos
-            </Button>
-          </>
-        ) : (
+          )
+        )}
+        {isLoggedIn && (
           <Button
             color="inherit"
-            onClick={() => navigate('/my-orders')}
+            onClick={handleLogout}
             sx={{ color: theme.secondary }}
           >
-            Mis Pedidos
+            Cerrar Sesión
           </Button>
         )}
-        <Button
-          color="inherit"
-          onClick={handleLogout}
-          sx={{ color: theme.secondary }}
-        >
-          Cerrar Sesión
-        </Button>
       </Toolbar>
     </AppBar>
   );

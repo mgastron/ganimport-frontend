@@ -68,33 +68,32 @@ const Header = () => {
           />
         </Link>
         <Box sx={{ flexGrow: 1 }} />
-        {isLoggedIn && (
-          isAdmin ? (
-            <>
-              <Button
-                color="inherit"
-                onClick={() => navigate('/admin/users')}
-                sx={{ color: theme.secondary }}
-              >
-                Crear Usuario
-              </Button>
-              <Button
-                color="inherit"
-                onClick={() => navigate('/admin/orders')}
-                sx={{ color: theme.secondary }}
-              >
-                Ver Pedidos
-              </Button>
-            </>
-          ) : (
+        {isLoggedIn && isAdmin && (
+          <>
             <Button
               color="inherit"
-              onClick={() => navigate('/my-orders')}
+              onClick={() => navigate('/admin/users')}
               sx={{ color: theme.secondary }}
             >
-              Mis Pedidos
+              Crear Usuario
             </Button>
-          )
+            <Button
+              color="inherit"
+              onClick={() => navigate('/admin/orders')}
+              sx={{ color: theme.secondary }}
+            >
+              Ver Pedidos
+            </Button>
+          </>
+        )}
+        {isLoggedIn && !isAdmin && (
+          <Button
+            color="inherit"
+            onClick={() => navigate('/my-orders')}
+            sx={{ color: theme.secondary }}
+          >
+            Mis Pedidos
+          </Button>
         )}
         {isLoggedIn && (
           <Button

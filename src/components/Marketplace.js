@@ -245,6 +245,14 @@ const Marketplace = () => {
 
   return (
     <Container>
+      {/* Ocultar botones de usuario si no está logueado */}
+      {isLoggedIn && (
+        <Box sx={{ position: 'absolute', top: 0, right: 0, display: 'flex', gap: 2, mt: 2, mr: 2 }}>
+          <Button href="/orders" sx={{ color: theme.secondary }}>MIS PEDIDOS</Button>
+          <Button href="/logout" sx={{ color: theme.secondary }}>CERRAR SESIÓN</Button>
+        </Box>
+      )}
+
       <Box sx={{ mb: 4, mt: 4 }}>
         <form onSubmit={handleSearch} style={{ display: 'flex', gap: '16px' }}>
           <TextField
@@ -346,26 +354,29 @@ const Marketplace = () => {
         </Box>
       ) : (
         <>
-          <Button
-            color="primary"
-            onClick={() => setCartOpen(true)}
-            style={{ 
-              position: 'fixed', 
-              bottom: 20,
-              right: 20,
-              zIndex: 1000,
-              backgroundColor: theme.primary,
-              color: theme.secondary,
-              padding: '12px',
-              minWidth: 'unset',
-              borderRadius: '50%',
-              boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0.1)'
-            }}
-          >
-            <Badge badgeContent={cart.length} color="error">
-              <ShoppingCartIcon />
-            </Badge>
-          </Button>
+          {/* Mostrar el carrito solo si está logueado */}
+          {isLoggedIn && (
+            <Button
+              color="primary"
+              onClick={() => setCartOpen(true)}
+              style={{ 
+                position: 'fixed', 
+                bottom: 20,
+                right: 20,
+                zIndex: 1000,
+                backgroundColor: theme.primary,
+                color: theme.secondary,
+                padding: '12px',
+                minWidth: 'unset',
+                borderRadius: '50%',
+                boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0.1)'
+              }}
+            >
+              <Badge badgeContent={cart.length} color="error">
+                <ShoppingCartIcon />
+              </Badge>
+            </Button>
+          )}
 
           <Grid container spacing={2} sx={{ minHeight: '100vh' }}>
             {getCurrentPageProducts().map((product) => {
